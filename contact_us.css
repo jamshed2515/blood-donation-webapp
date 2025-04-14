@@ -1,0 +1,126 @@
+
+/* Set the font globally */
+body {
+  font-family: 'Roboto', sans-serif;  /* Body font */
+  background-color: #f4f4f9; /* Soft background color for a clean look */
+  color: #333; /* Dark text for readability */
+  line-height: 1.6; /* Ensure good line spacing */
+}
+
+/* Apply Merriweather font for headings */
+h1, h2, h3, h4 {
+  font-family: 'Merriweather', serif;
+  font-weight: bold; /* Make headings stand out */
+}
+
+/* Additional styling for paragraphs */
+p {
+  font-size: 1.1rem; /* Slightly larger text for better readability */
+  color: #555; /* Lighter text color for content */
+}
+
+/* Optional: Adjust size for headings */
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.8rem;
+}
+
+
+
+
+/* Global Colors */
+body {
+background-color: #f4f4f9;
+color: #333;
+}
+
+/* Headings */
+h1, h2, h3, h4 {
+color: #0077b6;
+}
+
+/* Form Inputs */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+border: 1px solid #ccc;
+border-radius: 4px;
+padding: 10px;
+transition: border-color 0.3s ease-in-out;
+}
+
+input:focus,
+textarea:focus {
+border-color: #00b4d8;
+outline: none;
+}
+
+/* Buttons */
+.btn-primary {
+background-color: #0077b6;
+border-color: #0077b6;
+transition: background-color 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+background-color: #023e8a;
+border-color: #023e8a;
+}
+@media (max-width: 768px) {
+h1 {
+  font-size: 2rem;
+}
+
+h2, h3 {
+  font-size: 1.5rem;
+}
+
+.card {
+  padding: 15px;
+}
+
+textarea,
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+  font-size: 1rem;
+}
+
+.btn {
+  font-size: 1rem;
+  padding: 10px 20px;
+}
+}
+
+@media (max-width: 480px) {
+h1 {
+  font-size: 1.6rem;
+}
+
+h2, h3 {
+  font-size: 1.2rem;
+}
+
+.card {
+  padding: 10px;
+}
+
+.btn {
+  width: 100%;
+}
+}
+
+
+#spinner img {
+    width: 50px;  /* Spinner size */
+    margin-bottom: 10px;
+  }
+  

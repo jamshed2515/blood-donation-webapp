@@ -22,12 +22,22 @@ if (mysqli_num_rows($result) > 0) {
             </h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">';
 
+    // Blood group color mapping
+    $bloodGroupColors = [
+        'AB' => 'bg-purple-500',
+        'A' => 'bg-blue-500',
+        'B' => 'bg-green-500',
+        'O' => 'bg-red-500'
+    ];
+
     while ($donor = mysqli_fetch_assoc($result)) {
         $bloodGroup = $donor['blood_group'];  // Blood group from 'blood' table
-        $bgColor = "bg-red-500";
-        if (strpos($bloodGroup, 'AB') !== false) $bgColor = "bg-purple-500";
-        else if (strpos($bloodGroup, 'A') !== false) $bgColor = "bg-blue-500";
-        else if (strpos($bloodGroup, 'B') !== false) $bgColor = "bg-green-500";
+        // Choose the color dynamically based on blood group
+        $bgColor = isset($bloodGroupColors[$bloodGroup]) ? $bloodGroupColors[$bloodGroup] : 'bg-red-500';
+
+        // Correct WhatsApp link creation
+        $donorNumber = $donor['donor_number'];  // Assuming this is the phone number
+        $whatsappLink = "https://wa.me/91{$donorNumber}?text=" . urlencode('Hi, I found your profile on the LiForce Blood Bank website. I would like to connect with you regarding a blood donation.');
 
         echo "
         <div class='group'>
@@ -67,9 +77,11 @@ if (mysqli_num_rows($result) > 0) {
             </div>
 
             <div class='px-4 pb-4'>
-              <button class='w-full text-sm font-semibold border border-red-500 text-red-500 rounded-md py-2 hover:bg-red-500 hover:text-white transition duration-200'>
-                Contact Donor
-              </button>
+              <a href='{$whatsappLink}' target='_blank'>
+                <button class='w-full text-sm font-semibold border border-red-500 text-red-500 rounded-md py-2 hover:bg-red-500 hover:text-white transition duration-200'>
+                  Contact Donor
+                </button>
+              </a>
             </div>
           </div>
         </div>";

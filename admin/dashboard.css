@@ -1,0 +1,136 @@
+
+/* Ensure the background covers the entire page */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Light grey background for the whole page */
+}
+
+/* Sidebar and Content Adjustments */
+#sidebar {
+    position: relative;
+    margin-top: -20px;
+    background-color: #f8f9fa;
+}
+
+#content {
+    position: relative;
+    margin-left: 210px;
+    background-color: #f4f4f4;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    min-height: calc(100vh - 60px); /* Ensures the content takes up at least the height of the viewport */
+}
+
+@media screen and (max-width: 600px) {
+    #content {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* Styling for Panels */
+.panel {
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #ffffff;
+    height: 250px;  /* Ensure all cards are of the same height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.panel:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+/* Panel colors with gradients */
+.panel-info .panel-body {
+    background: linear-gradient(135deg, #73c8a9, #3f8d7f);
+}
+
+.panel-green .panel-body {
+    background: linear-gradient(135deg, #6db5b2, #4e8697);
+}
+
+.panel-purple .panel-body {
+    background: linear-gradient(135deg, #9b59b6, #6a2a99);
+}
+
+/* Text styling within the panel */
+.panel-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.panel-body .stat-panel-number {
+    font-size: 40px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.panel-body .stat-panel-title {
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin-top: 10px;
+}
+
+/* Button Styling */
+.btn-danger {
+    background-color: #c0392b;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-danger:hover {
+    background-color: #e74c3c;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.col-md-3 {
+    flex: 0 0 23%;
+    margin-bottom: 20px;
+    padding: 0 10px;
+}
+
+/* Ensure cards are consistently sized */
+@media screen and (max-width: 768px) {
+    .col-md-3 {
+        flex: 0 0 48%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .col-md-3 {
+        flex: 0 0 100%;
+    }
+}
+
+.page-title {
+    font-size: 30px;
+    font-weight: bold;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+}
+

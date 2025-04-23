@@ -1,109 +1,123 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <title>Donate Blood</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Merriweather:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f8f9fa;
+    }
+    h1 {
+      font-family: 'Merriweather', serif;
+      color: #dc3545;
+    }
+    .form-section {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+    .form-group label {
+      font-weight: 500;
+    }
+    .btn-primary {
+      background-color: #dc3545;
+      border-color: #dc3545;
+    }
+    .btn-primary:hover {
+      background-color: #c82333;
+      border-color: #bd2130;
+    }
+  </style>
 </head>
 
 <body>
 <?php
+session_start();
 $active = 'donate';
 include('head.php');
 
-session_start();
-
 if (isset($_SESSION['success_message'])) {
-    echo '<div class="alert alert-success" role="alert">';
-    echo $_SESSION['success_message'];
-    echo '</div>';
-    unset($_SESSION['success_message']);
+  echo '<div class="alert alert-success text-center">' . $_SESSION['success_message'] . '</div>';
+  unset($_SESSION['success_message']);
 }
-
 if (isset($_SESSION['error_message'])) {
-    echo '<div class="alert alert-danger" role="alert">';
-    echo $_SESSION['error_message'];
-    echo '</div>';
-    unset($_SESSION['error_message']);
+  echo '<div class="alert alert-danger text-center">' . $_SESSION['error_message'] . '</div>';
+  unset($_SESSION['error_message']);
 }
 ?>
 
-<div id="page-container" style="margin-top:50px; position: relative;min-height: 84vh;">
-  <div class="container">
-    <div id="content-wrap" style="padding-bottom:50px;">
-      <div class="row">
-        <div class="col-lg-6">
-          <h1 class="mt-4 mb-3">Donate Blood</h1>
-        </div>
-      </div>
-      <form name="donor" action="savedata.php" method="post">
-        <div class="row">
-          <div class="col-lg-4 mb-4">
-            <div class="font-italic">Full Name<span style="color:red">*</span></div>
-            <div><input type="text" name="fullname" class="form-control" required></div>
+<div class="container mt-5 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      <div class="form-section">
+        <h1 class="mb-4">Donate Blood</h1>
+        <form name="donor" action="savedata.php" method="post">
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label>Full Name <span class="text-danger">*</span></label>
+              <input type="text" name="fullname" class="form-control" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label>Mobile Number <span class="text-danger">*</span></label>
+              <input type="text" name="mobileno" class="form-control" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label>Email Id</label>
+              <input type="email" name="emailid" class="form-control">
+            </div>
           </div>
-          <div class="col-lg-4 mb-4">
-            <div class="font-italic">Mobile Number<span style="color:red">*</span></div>
-            <div><input type="text" name="mobileno" class="form-control" required></div>
-          </div>
-          <div class="col-lg-4 mb-4">
-            <div class="font-italic">Email Id</div>
-            <div><input type="email" name="emailid" class="form-control"></div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-4 mb-4">
-            <div class="font-italic">Age<span style="color:red">*</span></div>
-            <div><input type="text" name="age" class="form-control" required></div>
-          </div>
-          <div class="col-lg-4 mb-4">
-            <div class="font-italic">Gender<span style="color:red">*</span></div>
-            <div><select name="gender" class="form-control" required>
-              <option value="">Select</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-            </select></div>
-          </div>
-          <div class="col-lg-4 mb-4">
-            <div class="font-italic">Blood Group<span style="color:red">*</span></div>
-            <div><select name="blood" class="form-control" required>
-              <option value="" selected disabled>Select</option>
-              <?php
-              include 'conn.php';
-              $sql = "select * from blood";
-              $result = mysqli_query($conn, $sql) or die("query unsuccessful.");
-              while ($row = mysqli_fetch_assoc($result)) {
-                ?>
-                <option value="<?php echo $row['blood_id'] ?>"><?php echo $row['blood_group'] ?></option>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label>Age <span class="text-danger">*</span></label>
+              <input type="text" name="age" class="form-control" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label>Gender <span class="text-danger">*</span></label>
+              <select name="gender" class="form-control" required>
+                <option value="">Select</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+            </div>
+            <div class="form-group col-md-4">
+              <label>Blood Group <span class="text-danger">*</span></label>
+              <select name="blood" class="form-control" required>
+                <option value="" disabled selected>Select</option>
                 <?php
-              }
-              ?>
-            </select></div>
+                include 'conn.php';
+                $sql = "SELECT * FROM blood";
+                $result = mysqli_query($conn, $sql) or die("Query unsuccessful.");
+                while ($row = mysqli_fetch_assoc($result)) {
+                  echo '<option value="' . $row['blood_id'] . '">' . $row['blood_group'] . '</option>';
+                }
+                ?>
+              </select>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-4 mb-4">
-            <div class="font-italic">Address<span style="color:red">*</span></div>
-            <div><textarea class="form-control" name="address" required></textarea></div>
+          <div class="form-group">
+            <label>Address <span class="text-danger">*</span></label>
+            <textarea name="address" class="form-control" rows="3" required></textarea>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-4 mb-4">
-            <div><input type="submit" name="submit" class="btn btn-primary" value="Submit" style="cursor:pointer"></div>
+          <div class="text-right">
+            <input type="submit" name="submit" class="btn btn-primary px-4" value="Submit">
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </div>
-  <?php include('footer.php') ?>
 </div>
+
+<?php include('footer.php'); ?>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

@@ -52,9 +52,9 @@ $active="contact";
       <?php if(isset($_POST['update']))
       {
         $address=$_POST['address'];
-        $number=$_POST['email'];
-        $email=$_POST['contactno'];
-        $conn=mysqli_connect("localhost","root","","blood_donation") or die("Connection error");
+        $email=$_POST['email'];
+        $number=$_POST['contactno'];
+        $conn=mysqli_connect("localhost","root","","blood_bank") or die("Connection error");
         $sql= "update contact_info set contact_address='{$address}', contact_mail='{$email}', contact_phone='{$number}' where contact_id='1'";
         $result=mysqli_query($conn,$sql) or die("query unsuccessful.");
       echo '<div class="alert alert-success"><b>Contact Details Updated Successfully.</b></div>';

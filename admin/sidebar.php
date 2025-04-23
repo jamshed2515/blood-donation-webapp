@@ -10,8 +10,9 @@
 <style>
 body {
   margin: 0;
-font-family: 'Averia Gruesa Libre';font-size: 15px;
-    color:#F8F9F9;
+  font-family: 'Averia Gruesa Libre';
+  font-size: 15px;
+  color: #F8F9F9;
 }
 
 .sidebar {
@@ -19,16 +20,16 @@ font-family: 'Averia Gruesa Libre';font-size: 15px;
   padding: 0;
   width: 210px;
   background-color: #333333;
-  position: fixed;
-  height: 100%;
-  overflow: auto;
-
+  position: absolute;  /* Change fixed to absolute */
+  height: 800px;  /* Let it adjust height based on content */
+  overflow: auto;  /* Allows scrolling within the sidebar if the content overflows */
 }
+
+
 
 .sidebar a {
   display: block;
   color: white;
-
   padding: 16px;
   text-decoration: none;
 }
@@ -41,7 +42,7 @@ font-family: 'Averia Gruesa Libre';font-size: 15px;
 }
 
 div.content {
-  margin-left: 200px;
+  margin-left: 210px;
   padding: 1px 16px;
   height: 1000px;
 }
@@ -52,15 +53,15 @@ div.content {
     height: auto;
     position: relative;
   }
-  .sidebar a {float: left;}
-  div.content {margin-left: 0;}
-}
-a.act{
-background: linear-gradient(to right, #00C9FF 0%, #92FE9D 100%);
-color: black;
-border-radius:10px;
+  .sidebar a { float: left; }
+  div.content { margin-left: 0; }
 }
 
+a.act {
+  background: linear-gradient(to right, #00C9FF 0%, #92FE9D 100%);
+  color: black;
+  border-radius: 10px;
+}
 
 @media screen and (max-width: 400px) {
   .sidebar a {
@@ -72,13 +73,28 @@ border-radius:10px;
 </head>
 <body>
 
-<div class="sidebar" ><b>
-  <a href="dashboard.php"   <?php if($active=='dashboard') echo "class='act'"; ?>><span class="glyphicon glyphicon-dashboard"></span>&nbsp&nbspDashboard</a>
-  <a href="add_donor.php"   <?php if($active=='add') echo "class='act'"; ?>><span class="glyphicon glyphicon-pencil"></span>&nbsp&nbspAdd Donor</a>
-  <a href="donor_list.php"   <?php if($active=='list') echo "class='act'"; ?>><span class="glyphicon glyphicon-list-alt"></span>&nbsp&nbsp Donor List</a>
-  <a href="query.php"   <?php if($active=='query') echo "class='act'"; ?>><span class="glyphicon glyphicon-check"></span>&nbsp&nbspCheck Contactus Query</a>
-
-    <a href="pages.php"   <?php if($active=='pages') echo "class='act'"; ?>><span class="glyphicon glyphicon-edit"></span>&nbsp&nbspManage Pages</a>
-  <a href="update_contact.php"   <?php if($active=='contact') echo "class='act'"; ?>><span class="glyphicon glyphicon-edit"></span>&nbsp&nbspUpdate Contact Info</a>
-
+<div class="sidebar">
+  <b>
+    <a href="dashboard.php"   <?php if($active=='dashboard') echo "class='act'"; ?>>
+      <span class="glyphicon glyphicon-dashboard"></span>&nbsp&nbspDashboard
+    </a>
+    <a href="add_donor.php"   <?php if($active=='add') echo "class='act'"; ?>>
+      <span class="glyphicon glyphicon-pencil"></span>&nbsp&nbspAdd Donor
+    </a>
+    <a href="donor_list.php"   <?php if($active=='list') echo "class='act'"; ?>>
+      <span class="glyphicon glyphicon-list-alt"></span>&nbsp&nbsp Donor List
+    </a>
+    <a href="query.php"   <?php if($active=='query') echo "class='act'"; ?>>
+      <span class="glyphicon glyphicon-check"></span>&nbsp&nbspCheck Contactus Query
+    </a>
+    <a href="pages.php"   <?php if($active=='pages') echo "class='act'"; ?>>
+      <span class="glyphicon glyphicon-edit"></span>&nbsp&nbspManage Pages
+    </a>
+    <a href="update_contact.php"   <?php if($active=='contact') echo "class='act'"; ?>>
+      <span class="glyphicon glyphicon-edit"></span>&nbsp&nbspUpdate Contact Info
+    </a>
+  </b>
 </div>
+
+</body>
+</html>
